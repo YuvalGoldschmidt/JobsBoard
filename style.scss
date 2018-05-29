@@ -1,0 +1,100 @@
+body{
+	margin: 20px !important;
+	min-height: 100%;
+	overflow-y: scroll;
+	background-color: white;
+	color: black;
+}
+
+.filters{
+	padding-bottom: 20px;
+}
+
+.filter-choose, .filter-choose-all{
+	display: inline-block;
+	height: 15px;
+	width: 15px;
+	border: 1px solid #959595;
+}
+
+.filter-choose.active, .filter-choose-all.active{
+	background-color: #959595;
+}
+
+.jobtype{
+	display: inline-block;
+}
+
+.users{
+	display: inline-block;
+	height: 100%;
+}
+
+.profile{
+	display: inline-block;
+	transition: all 200ms;
+}
+
+.profile:hover{
+	.profile-img{
+		margin-bottom: -60px;
+	}
+	.hideit{
+		display: inline-block;
+	}
+}
+
+.profile:nth-child(4n){
+	margin-bottom: 75px;
+}
+
+.profile-img{
+	height: 100%;
+	width: 100%;
+}
+
+.details{
+	font-family: "dosis";
+	position: inherit;	
+	background-color: black;
+	color: white;
+	text-align: center;
+	padding: 2px;
+	margin-top: -20px;
+}
+
+.name{
+	margin-top: 0;
+}
+
+.hideit{
+	display: none;
+	height: 60px;
+}
+
+.hideit a{
+	color: white;
+	text-decoration: none;
+}
+
+.hideit a:hover{
+	color: white;
+	text-decoration: none;
+}
+
+.social-media-link{
+	height: 40px;
+	width: 100px;
+	display: inline-block;
+	margin: 10px;
+	border-radius: 20px;
+	color: white;
+}
+
+.facebook-div{
+	background-color: #3B5998;
+}
+
+.linkedin-div{
+	background-color: #1884BC;
+}
