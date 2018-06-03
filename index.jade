@@ -5,35 +5,36 @@ html
 		link(rel="stylesheet" href="style.css" type="text/css")
 		link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css")
 		script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js")
+		script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js")
 		script(src="main.js")
-	body
+	body(ng-app="myApp" ng-controller="myCtrl")
 		div.filters.row
-			div.col-md-2.col-md-offset-1.first-filter
-				div.filter-choose-all.active
-				h5.jobtype All
+			div.col-md-2.col-md-offset-1.filter
+				input.filter-choose#all(type="checkbox" ng-model="filters.all")
+				label.jobtype(for="all" ng-class="{'bold-text': filters.all}") All
 			div.col-md-2.filter
-				div.filter-choose#web-developer
-				h5.jobtype Web Developer
+				input.filter-choose#webDeveloper(type="checkbox" ng-model="filters.webDeveloper")
+				label.jobtype(for="webDeveloper" ng-class="{'bold-text': filters.webDeveloper}") Web Developer
 			div.col-md-2.filter
-				div.filter-choose#graphic-designer
-				h5.jobtype Graphic Designer
+				input.filter-choose#graphicDesigner(type="checkbox" ng-model="filters.graphicDesigner")
+				label.jobtype(for="graphicDesigner" ng-class="{'bold-text': filters.graphicDesigner}") Graphic Designer
 			div.col-md-2.filter
-				div.filter-choose#marketing
-				h5.jobtype Marketing
+				input.filter-choose#marketing(type="checkbox" ng-model="filters.marketing")
+				label.jobtype(for="marketing" ng-class="{'bold-text': filters.marketing}") Marketing
 			div.col-md-2.filter
-				div.filter-choose#video
-				h5.jobtype Video
+				input.filter-choose#video(type="checkbox" ng-model="filters.video")
+				label.jobtype(for="video" ng-class="{'bold-text': filters.video}") Video
 			div.col-md-2.filter.col-md-offset-1
-				div.filter-choose#ios-developer
-				h5.jobtype iOS Developer
+				input.filter-choose#iosDeveloper(type="checkbox" ng-model="filters.iosDeveloper")
+				label.jobtype(for="iosDeveloper" ng-class="{'bold-text': filters.iosDeveloper}") iOS Developer
 			div.col-md-2.filter
-				div.filter-choose#social-media
-				h5.jobtype Social Media
+				input.filter-choose#socialMedia(type="checkbox" ng-model="filters.socialMedia")
+				label.jobtype(for="socialMedia" ng-class="{'bold-text': filters.socialMedia}") Social Media
 			div.col-md-2.filter
-				div.filter-choose#android-developer
-				h5.jobtype Android Developer
+				input.filter-choose#androidDeveloper(type="checkbox" ng-model="filters.androidDeveloper")
+				label.jobtype(for="androidDeveloper" ng-class="{'bold-text': filters.androidDeveloper}") Android Developer
 		div.users
-			div.col-md-3.profile.web-developer
+			div.col-md-3.profile.webDeveloper(ng-show="filters.all || filters.webDeveloper")
 				img.profile-img(src="profile-picture.jpg")
 				div.details
 					h2.name Yuval Goldschmidt
@@ -45,7 +46,7 @@ html
 						a.linkedin(href="#")
 							div.linkedin-div.social-media-link
 								h4 Linkedin
-			div.col-md-3.profile.graphic-designer
+			div.col-md-3.profile.graphicDesigner(ng-show="filters.all || filters.graphicDesigner")
 				img.profile-img(src="profile-picture.jpg")
 				div.details
 					h2.name Ron
@@ -57,7 +58,7 @@ html
 						a.linkedin(href="#")
 							div.linkedin-div.social-media-link
 								h4 Linkedin
-			div.col-md-3.profile.video
+			div.col-md-3.profile.video(ng-show="filters.all || filters.video")
 				img.profile-img(src="profile-picture.jpg")
 				div.details
 					h2.name DJ Song
@@ -69,7 +70,7 @@ html
 						a.linkedin(href="#")
 							div.linkedin-div.social-media-link
 								h4 Linkedin
-			div.col-md-3.profile.marketing
+			div.col-md-3.profile.marketing(ng-show="filters.all || filters.marketing")
 				img.profile-img(src="profile-picture.jpg")
 				div.details
 					h2.name Dana
@@ -81,7 +82,7 @@ html
 						a.linkedin(href="#")
 							div.linkedin-div.social-media-link
 								h4 Linkedin
-			div.col-md-3.profile.ios-developer
+			div.col-md-3.profile.iosDeveloper(ng-show="filters.all || filters.iosDeveloper")
 				img.profile-img(src="profile-picture.jpg")
 				div.details
 					h2.name Omer
@@ -93,7 +94,7 @@ html
 						a.linkedin(href="#")
 							div.linkedin-div.social-media-link
 								h4 Linkedin
-			div.col-md-3.profile.social-media
+			div.col-md-3.profile.socialMedia(ng-show="filters.all || filters.socialMedia")
 				img.profile-img(src="profile-picture.jpg")
 				div.details
 					h2.name Yoni
@@ -105,7 +106,7 @@ html
 						a.linkedin(href="#")
 							div.linkedin-div.social-media-link
 								h4 Linkedin
-			div.col-md-3.profile.web-developer
+			div.col-md-3.profile.webDeveloper(ng-show="filters.all || filters.webDeveloper")
 				img.profile-img(src="profile-picture.jpg")
 				div.details
 					h2.name Ofek
@@ -117,7 +118,7 @@ html
 						a.linkedin(href="#")
 							div.linkedin-div.social-media-link
 								h4 Linkedin
-			div.col-md-3.profile.android-developer
+			div.col-md-3.profile.androidDeveloper(ng-show="filters.all || filters.androidDeveloper")
 				img.profile-img(src="profile-picture.jpg")
 				div.details
 					h2.name Asher Cohen

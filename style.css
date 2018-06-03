@@ -10,19 +10,18 @@ body {
   padding-bottom: 20px;
 }
 
-.filter-choose, .filter-choose-all {
-  display: inline-block;
+.filter-choose {
   height: 15px;
   width: 15px;
-  border: 1px solid #959595;
-}
-
-.filter-choose.active, .filter-choose-all.active {
-  background-color: #959595;
 }
 
 .jobtype {
   display: inline-block;
+  font-weight: 400;
+}
+
+.bold-text {
+  font-weight: bold;
 }
 
 .users {
