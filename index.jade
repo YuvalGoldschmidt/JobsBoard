@@ -2,131 +2,59 @@ doctype html
 html
 	head
 		title Jobs Board
-		link(rel="stylesheet" href="style.css" type="text/css")
+		link(rel="stylesheet" href="style-dist.css" type="text/css")
 		link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css")
 		script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js")
 		script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js")
 		script(src="main.js")
+	
 	body(ng-app="myApp" ng-controller="myCtrl")
 		div.filters.row
-			div.col-md-2.col-md-offset-1.filter
-				input.filter-choose#all(type="checkbox" ng-model="filters.all")
-				label.jobtype(for="all" ng-class="{'bold-text': filters.all}") All
-			div.col-md-2.filter
-				input.filter-choose#webDeveloper(type="checkbox" ng-model="filters.webDeveloper")
-				label.jobtype(for="webDeveloper" ng-class="{'bold-text': filters.webDeveloper}") Web Developer
-			div.col-md-2.filter
-				input.filter-choose#graphicDesigner(type="checkbox" ng-model="filters.graphicDesigner")
-				label.jobtype(for="graphicDesigner" ng-class="{'bold-text': filters.graphicDesigner}") Graphic Designer
-			div.col-md-2.filter
-				input.filter-choose#marketing(type="checkbox" ng-model="filters.marketing")
-				label.jobtype(for="marketing" ng-class="{'bold-text': filters.marketing}") Marketing
-			div.col-md-2.filter
-				input.filter-choose#video(type="checkbox" ng-model="filters.video")
-				label.jobtype(for="video" ng-class="{'bold-text': filters.video}") Video
-			div.col-md-2.filter.col-md-offset-1
-				input.filter-choose#iosDeveloper(type="checkbox" ng-model="filters.iosDeveloper")
-				label.jobtype(for="iosDeveloper" ng-class="{'bold-text': filters.iosDeveloper}") iOS Developer
-			div.col-md-2.filter
-				input.filter-choose#socialMedia(type="checkbox" ng-model="filters.socialMedia")
-				label.jobtype(for="socialMedia" ng-class="{'bold-text': filters.socialMedia}") Social Media
-			div.col-md-2.filter
-				input.filter-choose#androidDeveloper(type="checkbox" ng-model="filters.androidDeveloper")
-				label.jobtype(for="androidDeveloper" ng-class="{'bold-text': filters.androidDeveloper}") Android Developer
+			div.col-md-3.filter(ng-repeat="(key, property) in filters")
+				input.filter-choose(id="{{ key }}" type="checkbox" ng-model="filters[key]" ng-click="filterFunction(key)")
+				label.jobtype(for="{{ key }}" ng-class="{'bold-text': filters[key]}") {{ key | filtersFormat }}
+		
 		div.users
-			div.col-md-3.profile.webDeveloper(ng-show="filters.all || filters.webDeveloper")
-				img.profile-img(src="profile-picture.jpg")
+			div.col-md-3.profile(ng-repeat="profile in profiles" ng-show="filters.all || filters[profile.job]")
+				img.profile-img(src="{{ profile.image }}")
 				div.details
-					h2.name Yuval Goldschmidt
-					h4.job Web Developer
+					h2.name {{ profile.name }}
+					h4.job {{ profile.job | filtersFormat }}
 					div.hideit
-						a.facebook(href="#")
+						a.facebook(href="{{ profile.facebook }}")
 							div.facebook-div.social-media-link
 								h4 Facebook
-						a.linkedin(href="#")
+						a.linkedin(href="{{ profile.linkedin }}")
 							div.linkedin-div.social-media-link
 								h4 Linkedin
-			div.col-md-3.profile.graphicDesigner(ng-show="filters.all || filters.graphicDesigner")
-				img.profile-img(src="profile-picture.jpg")
-				div.details
-					h2.name Ron
-					h4.job Graphic Designer
-					div.hideit
-						a.facebook(href="#")
-							div.facebook-div.social-media-link
-								h4 Facebook
-						a.linkedin(href="#")
-							div.linkedin-div.social-media-link
-								h4 Linkedin
-			div.col-md-3.profile.video(ng-show="filters.all || filters.video")
-				img.profile-img(src="profile-picture.jpg")
-				div.details
-					h2.name DJ Song
-					h4.job Video
-					div.hideit
-						a.facebook(href="#")
-							div.facebook-div.social-media-link
-								h4 Facebook
-						a.linkedin(href="#")
-							div.linkedin-div.social-media-link
-								h4 Linkedin
-			div.col-md-3.profile.marketing(ng-show="filters.all || filters.marketing")
-				img.profile-img(src="profile-picture.jpg")
-				div.details
-					h2.name Dana
-					h4.job Marketing
-					div.hideit
-						a.facebook(href="#")
-							div.facebook-div.social-media-link
-								h4 Facebook
-						a.linkedin(href="#")
-							div.linkedin-div.social-media-link
-								h4 Linkedin
-			div.col-md-3.profile.iosDeveloper(ng-show="filters.all || filters.iosDeveloper")
-				img.profile-img(src="profile-picture.jpg")
-				div.details
-					h2.name Omer
-					h4.job iOS Developer
-					div.hideit
-						a.facebook(href="#")
-							div.facebook-div.social-media-link
-								h4 Facebook
-						a.linkedin(href="#")
-							div.linkedin-div.social-media-link
-								h4 Linkedin
-			div.col-md-3.profile.socialMedia(ng-show="filters.all || filters.socialMedia")
-				img.profile-img(src="profile-picture.jpg")
-				div.details
-					h2.name Yoni
-					h4.job Social Media
-					div.hideit
-						a.facebook(href="#")
-							div.facebook-div.social-media-link
-								h4 Facebook
-						a.linkedin(href="#")
-							div.linkedin-div.social-media-link
-								h4 Linkedin
-			div.col-md-3.profile.webDeveloper(ng-show="filters.all || filters.webDeveloper")
-				img.profile-img(src="profile-picture.jpg")
-				div.details
-					h2.name Ofek
-					h4.job Web Developer
-					div.hideit
-						a.facebook(href="#")
-							div.facebook-div.social-media-link
-								h4 Facebook
-						a.linkedin(href="#")
-							div.linkedin-div.social-media-link
-								h4 Linkedin
-			div.col-md-3.profile.androidDeveloper(ng-show="filters.all || filters.androidDeveloper")
-				img.profile-img(src="profile-picture.jpg")
-				div.details
-					h2.name Asher Cohen
-					h4.job Android Developer
-					div.hideit
-						a.facebook(href="#")
-							div.facebook-div.social-media-link
-								h4 Facbook
-						a.linkedin(href="#")
-							div.linkedin-div.social-media-link
-								h4 Linkedin
+
+		div.register-button.btn-primary
+			h4.register-text Add Yourself Here
+
+		div.register-screen
+			div.register-window
+				h2.register-header Add Yourself!
+				div.exit-register
+					b
+					b
+					b
+					b
+				form.register-form
+					div.form-group
+						label(for="name-input") Full Name
+						input.form-control#name-input(type="text" name="name" placeholder="Your Name" required)
+					div.form-group
+						label(for="profession-select") Profession
+						select.form-control#profession-select(name="profession" required)
+							option(disabled selected value hidden)
+							option(ng-repeat="(key, property) in filters" ng-hide="$first" id="{{ key }}") {{ key | filtersFormat }}
+					div.form-group
+						label(for="image-input") Your Picture
+						input.form-control#image-input(type="url" name="image-link" placeholder="Add Your Profile Picture URL" required)
+					div.form-group
+						label(for="facebook-input") Facebook link
+						input.form-control#facbook-input(type="url" name="facebook-link" placeholder="Add Your Facebook Link" required)
+					div.form-group
+						label(for="linkedin-input") Linkedin link
+						input.form-control#linkedin-input(type="url" name="linkedin-link" placeholder="Add Your Linkedin Link" required)
+					button.btn.btn-primary(type="submit") Submit

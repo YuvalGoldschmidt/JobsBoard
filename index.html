@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Jobs Board</title>
-    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="style-dist.css" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
@@ -10,143 +10,59 @@
   </head>
   <body ng-app="myApp" ng-controller="myCtrl">
     <div class="filters row">
-      <div class="col-md-2 col-md-offset-1 filter">
-        <input id="all" type="checkbox" ng-model="filters.all" class="filter-choose">
-        <label for="all" ng-class="{'bold-text': filters.all}" class="jobtype">All</label>
-      </div>
-      <div class="col-md-2 filter">
-        <input id="webDeveloper" type="checkbox" ng-model="filters.webDeveloper" class="filter-choose">
-        <label for="webDeveloper" ng-class="{'bold-text': filters.webDeveloper}" class="jobtype">Web Developer</label>
-      </div>
-      <div class="col-md-2 filter">
-        <input id="graphicDesigner" type="checkbox" ng-model="filters.graphicDesigner" class="filter-choose">
-        <label for="graphicDesigner" ng-class="{'bold-text': filters.graphicDesigner}" class="jobtype">Graphic Designer</label>
-      </div>
-      <div class="col-md-2 filter">
-        <input id="marketing" type="checkbox" ng-model="filters.marketing" class="filter-choose">
-        <label for="marketing" ng-class="{'bold-text': filters.marketing}" class="jobtype">Marketing</label>
-      </div>
-      <div class="col-md-2 filter">
-        <input id="video" type="checkbox" ng-model="filters.video" class="filter-choose">
-        <label for="video" ng-class="{'bold-text': filters.video}" class="jobtype">Video</label>
-      </div>
-      <div class="col-md-2 filter col-md-offset-1">
-        <input id="iosDeveloper" type="checkbox" ng-model="filters.iosDeveloper" class="filter-choose">
-        <label for="iosDeveloper" ng-class="{'bold-text': filters.iosDeveloper}" class="jobtype">iOS Developer</label>
-      </div>
-      <div class="col-md-2 filter">
-        <input id="socialMedia" type="checkbox" ng-model="filters.socialMedia" class="filter-choose">
-        <label for="socialMedia" ng-class="{'bold-text': filters.socialMedia}" class="jobtype">Social Media</label>
-      </div>
-      <div class="col-md-2 filter">
-        <input id="androidDeveloper" type="checkbox" ng-model="filters.androidDeveloper" class="filter-choose">
-        <label for="androidDeveloper" ng-class="{'bold-text': filters.androidDeveloper}" class="jobtype">Android Developer</label>
+      <div ng-repeat="(key, property) in filters" class="col-md-3 filter">
+        <input id="{{ key }}" type="checkbox" ng-model="filters[key]" ng-click="filterFunction(key)" class="filter-choose">
+        <label for="{{ key }}" ng-class="{'bold-text': filters[key]}" class="jobtype">{{ key | filtersFormat }}</label>
       </div>
     </div>
     <div class="users">
-      <div ng-show="filters.all || filters.webDeveloper" class="col-md-3 profile webDeveloper"><img src="profile-picture.jpg" class="profile-img">
+      <div ng-repeat="profile in profiles" ng-show="filters.all || filters[profile.job]" class="col-md-3 profile"><img src="{{ profile.image }}" class="profile-img">
         <div class="details">
-          <h2 class="name">Yuval Goldschmidt</h2>
-          <h4 class="job">Web Developer</h4>
-          <div class="hideit"><a href="#" class="facebook">
+          <h2 class="name">{{ profile.name }}</h2>
+          <h4 class="job">{{ profile.job | filtersFormat }}</h4>
+          <div class="hideit"><a href="{{ profile.facebook }}" class="facebook">
               <div class="facebook-div social-media-link">
                 <h4>Facebook</h4>
-              </div></a><a href="#" class="linkedin">
+              </div></a><a href="{{ profile.linkedin }}" class="linkedin">
               <div class="linkedin-div social-media-link">
                 <h4>Linkedin</h4>
               </div></a></div>
         </div>
       </div>
-      <div ng-show="filters.all || filters.graphicDesigner" class="col-md-3 profile graphicDesigner"><img src="profile-picture.jpg" class="profile-img">
-        <div class="details">
-          <h2 class="name">Ron</h2>
-          <h4 class="job">Graphic Designer</h4>
-          <div class="hideit"><a href="#" class="facebook">
-              <div class="facebook-div social-media-link">
-                <h4>Facebook</h4>
-              </div></a><a href="#" class="linkedin">
-              <div class="linkedin-div social-media-link">
-                <h4>Linkedin</h4>
-              </div></a></div>
-        </div>
-      </div>
-      <div ng-show="filters.all || filters.video" class="col-md-3 profile video"><img src="profile-picture.jpg" class="profile-img">
-        <div class="details">
-          <h2 class="name">DJ Song</h2>
-          <h4 class="job">Video</h4>
-          <div class="hideit"><a href="#" class="facebook">
-              <div class="facebook-div social-media-link">
-                <h4>Facebook</h4>
-              </div></a><a href="#" class="linkedin">
-              <div class="linkedin-div social-media-link">
-                <h4>Linkedin</h4>
-              </div></a></div>
-        </div>
-      </div>
-      <div ng-show="filters.all || filters.marketing" class="col-md-3 profile marketing"><img src="profile-picture.jpg" class="profile-img">
-        <div class="details">
-          <h2 class="name">Dana</h2>
-          <h4 class="job">Marketing</h4>
-          <div class="hideit"><a href="#" class="facebook">
-              <div class="facebook-div social-media-link">
-                <h4>Facebook</h4>
-              </div></a><a href="#" class="linkedin">
-              <div class="linkedin-div social-media-link">
-                <h4>Linkedin</h4>
-              </div></a></div>
-        </div>
-      </div>
-      <div ng-show="filters.all || filters.iosDeveloper" class="col-md-3 profile iosDeveloper"><img src="profile-picture.jpg" class="profile-img">
-        <div class="details">
-          <h2 class="name">Omer</h2>
-          <h4 class="job">iOS Developer</h4>
-          <div class="hideit"><a href="#" class="facebook">
-              <div class="facebook-div social-media-link">
-                <h4>Facebook</h4>
-              </div></a><a href="#" class="linkedin">
-              <div class="linkedin-div social-media-link">
-                <h4>Linkedin</h4>
-              </div></a></div>
-        </div>
-      </div>
-      <div ng-show="filters.all || filters.socialMedia" class="col-md-3 profile socialMedia"><img src="profile-picture.jpg" class="profile-img">
-        <div class="details">
-          <h2 class="name">Yoni</h2>
-          <h4 class="job">Social Media</h4>
-          <div class="hideit"><a href="#" class="facebook">
-              <div class="facebook-div social-media-link">
-                <h4>Facebook</h4>
-              </div></a><a href="#" class="linkedin">
-              <div class="linkedin-div social-media-link">
-                <h4>Linkedin</h4>
-              </div></a></div>
-        </div>
-      </div>
-      <div ng-show="filters.all || filters.webDeveloper" class="col-md-3 profile webDeveloper"><img src="profile-picture.jpg" class="profile-img">
-        <div class="details">
-          <h2 class="name">Ofek</h2>
-          <h4 class="job">Web Developer</h4>
-          <div class="hideit"><a href="#" class="facebook">
-              <div class="facebook-div social-media-link">
-                <h4>Facebook</h4>
-              </div></a><a href="#" class="linkedin">
-              <div class="linkedin-div social-media-link">
-                <h4>Linkedin</h4>
-              </div></a></div>
-        </div>
-      </div>
-      <div ng-show="filters.all || filters.androidDeveloper" class="col-md-3 profile androidDeveloper"><img src="profile-picture.jpg" class="profile-img">
-        <div class="details">
-          <h2 class="name">Asher Cohen</h2>
-          <h4 class="job">Android Developer</h4>
-          <div class="hideit"><a href="#" class="facebook">
-              <div class="facebook-div social-media-link">
-                <h4>Facbook</h4>
-              </div></a><a href="#" class="linkedin">
-              <div class="linkedin-div social-media-link">
-                <h4>Linkedin</h4>
-              </div></a></div>
-        </div>
+    </div>
+    <div class="register-button btn-primary">
+      <h4 class="register-text">Add Yourself Here</h4>
+    </div>
+    <div class="register-screen">
+      <div class="register-window">
+        <h2 class="register-header">Add Yourself!</h2>
+        <div class="exit-register"><b></b><b></b><b></b><b></b></div>
+        <form class="register-form">
+          <div class="form-group">
+            <label for="name-input">Full Name</label>
+            <input id="name-input" type="text" name="name" placeholder="Your Name" required class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="profession-select">Profession</label>
+            <select id="profession-select" name="profession" required class="form-control">
+              <option disabled selected value hidden></option>
+              <option ng-repeat="(key, property) in filters" ng-hide="$first" id="{{ key }}">{{ key | filtersFormat }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="image-input">Your Picture</label>
+            <input id="image-input" type="url" name="image-link" placeholder="Add Your Profile Picture URL" required class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="facebook-input">Facebook link</label>
+            <input id="facbook-input" type="url" name="facebook-link" placeholder="Add Your Facebook Link" required class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="linkedin-input">Linkedin link</label>
+            <input id="linkedin-input" type="url" name="linkedin-link" placeholder="Add Your Linkedin Link" required class="form-control">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
       </div>
     </div>
   </body>
