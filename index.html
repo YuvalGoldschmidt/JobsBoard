@@ -2,11 +2,11 @@
 <html>
   <head>
     <title>Jobs Board</title>
-    <link rel="stylesheet" href="style-dist.css" type="text/css">
+    <link rel="stylesheet" href="/style-dist.css" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <script src="main.js"></script>
+    <script src="/main.js" type="text/javascript"></script>
   </head>
   <body ng-app="myApp" ng-controller="myCtrl">
     <div class="filters row">
@@ -37,29 +37,29 @@
       <div class="register-window">
         <h2 class="register-header">Add Yourself!</h2>
         <div class="exit-register"><b></b><b></b><b></b><b></b></div>
-        <form class="register-form">
+        <form action="/add-profile" method="POST" class="register-form">
           <div class="form-group">
             <label for="name-input">Full Name</label>
             <input id="name-input" type="text" name="name" placeholder="Your Name" required class="form-control">
           </div>
           <div class="form-group">
             <label for="profession-select">Profession</label>
-            <select id="profession-select" name="profession" required class="form-control">
-              <option disabled selected value hidden></option>
-              <option ng-repeat="(key, property) in filters" ng-hide="$first" id="{{ key }}">{{ key | filtersFormat }}</option>
+            <select id="profession-select" name="job" required class="form-control">
+              <option disabled selected hidden>Choose One...</option>
+              <option ng-repeat="(key, property) in filters" ng-hide="$first" value="{{ key }}">{{ key | filtersFormat }}</option>
             </select>
           </div>
           <div class="form-group">
             <label for="image-input">Your Picture</label>
-            <input id="image-input" type="url" name="image-link" placeholder="Add Your Profile Picture URL" required class="form-control">
+            <input id="image-input" type="url" name="image" placeholder="Add Your Profile Picture URL" required class="form-control">
           </div>
           <div class="form-group">
             <label for="facebook-input">Facebook link</label>
-            <input id="facbook-input" type="url" name="facebook-link" placeholder="Add Your Facebook Link" required class="form-control">
+            <input id="facbook-input" type="url" name="facebook" placeholder="Add Your Facebook Link" required class="form-control">
           </div>
           <div class="form-group">
             <label for="linkedin-input">Linkedin link</label>
-            <input id="linkedin-input" type="url" name="linkedin-link" placeholder="Add Your Linkedin Link" required class="form-control">
+            <input id="linkedin-input" type="url" name="linkedin" placeholder="Add Your Linkedin Link" required class="form-control">
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>

@@ -1,0 +1,65 @@
+[
+	{
+		"name": "Yuval Goldschmidt",
+		"job": "webDeveloper",
+		"image": "img/profile-picture.jpg",
+		"facebook": "#",
+		"linkedin": "#"
+	},
+	{
+		"name": "Ron",
+		"job": "graphicDesigner",
+		"image": "img/profile-picture.jpg",
+		"facebook": "#",
+		"linkedin": "#"
+	},
+	{
+		"name": "DJ Song",
+		"job": "video",
+		"image": "img/profile-picture.jpg",
+		"facebook": "#",
+		"linkedin": "#"
+	},
+	{
+		"name": "Dana",
+		"job": "marketing",
+		"image": "img/profile-picture.jpg",
+		"facebook": "#",
+		"linkedin": "#"
+	},
+	{
+		"name": "Omer",
+		"job": "iosDeveloper",
+		"image": "img/profile-picture.jpg",
+		"facebook": "#",
+		"linkedin": "#"
+	},
+	{
+		"name": "Yoni",
+		"job": "socialMedia",
+		"image": "img/profile-picture.jpg",
+		"facebook": "#",
+		"linkedin": "#"
+	},
+	{
+		"name": "Ofek",
+		"job": "webDeveloper",
+		"image": "img/profile-picture.jpg",
+		"facebook": "#",
+		"linkedin": "#"
+	},
+	{
+		"name": "Asher Cohen",
+		"job": "androidDeveloper",
+		"image": "img/profile-picture.jpg",
+		"facebook": "#",
+		"linkedin": "#"
+	},
+	{
+		"name": "Tomer Gad",
+		"job": "graphicDesigner",
+		"image": "img/profile-picture.jpg",
+		"facebook": "#",
+		"linkedin": "#"
+	}
+]

@@ -12,7 +12,7 @@ var main=function(){
 
 	//Angular settings
 	var app = angular.module("myApp", []);
-	app.controller('myCtrl', function($scope, $timeout){
+	app.controller('myCtrl', function($scope, $timeout, $http){
 		//Filters object
 		$scope.filters = {
 			'all': true,
@@ -51,84 +51,13 @@ var main=function(){
 			}, 1);
 		};
 
-		$scope.profiles = [
-			{
-				'name': 'Yuval Goldschmidt',
-				'job': 'webDeveloper',
-				'image': 'profile-picture.jpg',
-				'facebook': '#',
-				'linkedin': '#'
-			},
-			{
-				'name': 'Ron',
-				'job': 'graphicDesigner',
-				'image': 'profile-picture.jpg',
-				'facebook': '#',
-				'linkedin': '#'
-			},
-			{
-				'name': 'DJ Song',
-				'job': 'video',
-				'image': 'profile-picture.jpg',
-				'facebook': '#',
-				'linkedin': '#'
-			},
-			{
-				'name': 'Dana',
-				'job': 'marketing',
-				'image': 'profile-picture.jpg',
-				'facebook': '#',
-				'linkedin': '#'
-			},
-			{
-				'name': 'Omer',
-				'job': 'iosDeveloper',
-				'image': 'profile-picture.jpg',
-				'facebook': '#',
-				'linkedin': '#'
-			},
-			{
-				'name': 'Yoni',
-				'job': 'socialMedia',
-				'image': 'profile-picture.jpg',
-				'facebook': '#',
-				'linkedin': '#'
-			},
-			{
-				'name': 'Ofek',
-				'job': 'webDeveloper',
-				'image': 'profile-picture.jpg',
-				'facebook': '#',
-				'linkedin': '#'
-			},
-			{
-				'name': 'Asher Cohen',
-				'job': 'androidDeveloper',
-				'image': 'profile-picture.jpg',
-				'facebook': '#',
-				'linkedin': '#'
-			},
-			{
-				'name': 'Tomer Gad',
-				'job': 'graphicDesigner',
-				'image': 'profile-picture.jpg',
-				'facebook': '#',
-				'linkedin': '#'
-			},
-		];
+		$http.get('/profiles.json').then(function(response){
+			$scope.profiles = JSON.parse(JSON.stringify(response.data));
+		});
 
-		/*Add profile when form submited*/
+		/*Update profiles variable when form submited*/
 		$('.register-form').submit(function(){
-			var newProfile = {
-				'name': $('#name-input').val(),
-				'job': $('#profession-select').find('option:selected').attr('id'),
-				'image': $('#image-input').val(),
-				'facebook': $('#facebook-input').val(),
-				'linkedin': $('#linkedin-input').val()
-			}
-			$scope.profiles.push(newProfile);
-			$(this).trigger('reset');
-			alert("Your Profile Was Added");
+			$scope.profiles = JSON.parse(JSON.stringify(response.data));
 		});
 	});
 

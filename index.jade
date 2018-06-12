@@ -2,11 +2,11 @@ doctype html
 html
 	head
 		title Jobs Board
-		link(rel="stylesheet" href="style-dist.css" type="text/css")
+		link(rel="stylesheet" href="/style-dist.css" type="text/css")
 		link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css")
 		script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js")
 		script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js")
-		script(src="main.js")
+		script(src="/main.js" type="text/javascript")
 	
 	body(ng-app="myApp" ng-controller="myCtrl")
 		div.filters.row
@@ -39,22 +39,22 @@ html
 					b
 					b
 					b
-				form.register-form
+				form.register-form(action="/add-profile" method="POST")
 					div.form-group
 						label(for="name-input") Full Name
 						input.form-control#name-input(type="text" name="name" placeholder="Your Name" required)
 					div.form-group
 						label(for="profession-select") Profession
-						select.form-control#profession-select(name="profession" required)
-							option(disabled selected value hidden)
-							option(ng-repeat="(key, property) in filters" ng-hide="$first" id="{{ key }}") {{ key | filtersFormat }}
+						select.form-control#profession-select(name="job" required)
+							option(disabled selected hidden) Choose One...
+							option(ng-repeat="(key, property) in filters" ng-hide="$first" value="{{ key }}") {{ key | filtersFormat }}
 					div.form-group
 						label(for="image-input") Your Picture
-						input.form-control#image-input(type="url" name="image-link" placeholder="Add Your Profile Picture URL" required)
+						input.form-control#image-input(type="url" name="image" placeholder="Add Your Profile Picture URL" required)
 					div.form-group
 						label(for="facebook-input") Facebook link
-						input.form-control#facbook-input(type="url" name="facebook-link" placeholder="Add Your Facebook Link" required)
+						input.form-control#facbook-input(type="url" name="facebook" placeholder="Add Your Facebook Link" required)
 					div.form-group
 						label(for="linkedin-input") Linkedin link
-						input.form-control#linkedin-input(type="url" name="linkedin-link" placeholder="Add Your Linkedin Link" required)
+						input.form-control#linkedin-input(type="url" name="linkedin" placeholder="Add Your Linkedin Link" required)
 					button.btn.btn-primary(type="submit") Submit
