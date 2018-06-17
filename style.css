@@ -12,8 +12,15 @@ body{
 }
 
 .filter-choose{
+	-webkit-appearance: none;
 	height: 15px;
 	width: 15px;
+	border: 1px solid #959595;
+	outline: none !important;
+}
+
+.filter-choose:checked{
+	background-color: #959595;
 }
 
 .jobtype{
