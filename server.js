@@ -6,17 +6,13 @@ var app = express();
 
 /*Routes*/
 app.get('/', function(req, res){
-	fs.readFile(__dirname + '/index.html', 'utf8', function(err, data){
-		res.end(data);
-	});
+	res.sendFile(__dirname + '/index.html');
 })
 app.get('/img/:name', function(req, res){
 	res.sendFile(__dirname + '/img/' + req.params.name);
 })
 app.get('/:name', function(req, res){
-	fs.readFile(__dirname + '/' + req.params.name, 'utf8', function(err, data){
-		res.end(data);
-	});
+	res.sendFile(__dirname + '/' + req.params.name);
 })
 
 /*Add new profile*/

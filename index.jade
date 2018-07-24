@@ -10,15 +10,15 @@ html
 	
 	body(ng-app="myApp" ng-controller="myCtrl")
 		div.filters.row
-			div.col-md-3.filter(ng-repeat="(key, property) in filters")
+			div.col-md-3.col-sm-4.col-xs-6.filter(ng-repeat="(key, property) in filters")
 				input.filter-choose(id="{{ key }}" type="checkbox" ng-model="filters[key]" ng-click="filterFunction(key)")
 				label.jobtype(for="{{ key }}" ng-class="{'bold-text': filters[key]}") {{ key | filtersFormat }}
 		
 		div.users
-			div.col-md-3.profile(ng-repeat="profile in profiles" ng-show="filters.all || filters[profile.job]")
+			div.col-md-3.col-sm-4.profile(ng-repeat="profile in profiles" ng-show="filters.all || filters[profile.job]")
 				img.profile-img(src="{{ profile.image }}")
 				div.details
-					h2.name {{ profile.name }}
+					h3.name {{ profile.name }}
 					h4.job {{ profile.job | filtersFormat }}
 					div.hideit
 						a.facebook(href="{{ profile.facebook }}")

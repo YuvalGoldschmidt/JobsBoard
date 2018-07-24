@@ -10,15 +10,15 @@
   </head>
   <body ng-app="myApp" ng-controller="myCtrl">
     <div class="filters row">
-      <div ng-repeat="(key, property) in filters" class="col-md-3 filter">
+      <div ng-repeat="(key, property) in filters" class="col-md-3 col-sm-4 col-xs-6 filter">
         <input id="{{ key }}" type="checkbox" ng-model="filters[key]" ng-click="filterFunction(key)" class="filter-choose">
         <label for="{{ key }}" ng-class="{'bold-text': filters[key]}" class="jobtype">{{ key | filtersFormat }}</label>
       </div>
     </div>
     <div class="users">
-      <div ng-repeat="profile in profiles" ng-show="filters.all || filters[profile.job]" class="col-md-3 profile"><img src="{{ profile.image }}" class="profile-img">
+      <div ng-repeat="profile in profiles" ng-show="filters.all || filters[profile.job]" class="col-md-3 col-sm-4 profile"><img src="{{ profile.image }}" class="profile-img">
         <div class="details">
-          <h2 class="name">{{ profile.name }}</h2>
+          <h3 class="name">{{ profile.name }}</h3>
           <h4 class="job">{{ profile.job | filtersFormat }}</h4>
           <div class="hideit"><a href="{{ profile.facebook }}" class="facebook">
               <div class="facebook-div social-media-link">

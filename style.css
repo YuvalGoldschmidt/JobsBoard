@@ -36,6 +36,7 @@ body{
 	display: inline-block;
 	height: 100%;
 	width: 100%;
+	padding: 0 20px;
 }
 
 .profile{
@@ -62,7 +63,7 @@ body{
 	background-color: black;
 	color: white;
 	text-align: center;
-	padding: 2px;
+	padding: 5px;
 	margin-top: -20px;
 }
 
@@ -73,6 +74,7 @@ body{
 .hideit{
 	display: none;
 	height: 60px;
+	width: 100%;
 }
 
 .hideit a{
@@ -86,10 +88,9 @@ body{
 }
 
 .social-media-link{
-	height: 40px;
-	width: 100px;
+	width: 35%;
 	display: inline-block;
-	margin: 10px;
+	margin: 10px 5%;
 	border-radius: 20px;
 	color: white;
 }
@@ -131,10 +132,10 @@ body{
 
 .register-window{
 	position: fixed;
-	top: 10%;
+	top: 7.5%;
 	left: 20%;
-	min-width: 60%;
-	min-height: 80%;
+	width: 60%;
+	height: 85%;
 	padding: 20px;
 	border: 1px solid #337ab7;
 	background-color: white;
@@ -183,4 +184,22 @@ body{
 .exit-register b:nth-child(4){
 	border-right-color: white;
 	right: -2px;
+}
+
+@media (max-width: 991px){
+	.register-window{
+		left: 10%;
+		width: 80%;
+	}
+}
+
+@media (max-width: 767px){
+	.profile{
+		margin-bottom: 30px;
+	}
+
+	.register-window{
+		left: 5%;
+		width: 90%;
+	}
 }
